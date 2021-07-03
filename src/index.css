@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Karma', serif;
+}
+
+code {
+  font-family:'Karma', serif;
+}
+
+.date-container {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.date-field {
+  margin-left: 2%;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #DEC79B;
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 120%;
+}
+
+.form-styled {
+  display: flex;
+  flex-direction: column;
+  text-align: initial;
+  border: 1px solid lightgray;
+  border-radius: 4px; 
+  padding: 0% 5% 0% 5%;
+  margin: 2% 10% 5% 10%;
+}
+
+.input-styled {
+  margin: 2% 0 0 0;
+  width: 96%;
+  padding: 6px 2%;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+.note-input {
+  margin: 2% 0 0 0;
+  width: 96%;
+  padding: 6px 2%;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  height: 55px;
+  resize: none;
+}
+
+.h3-notes {
+  margin: 0;
+}
+
+.p-notes {
+  width: 101%;
+  margin-top: 0;
+}
+
+.h3-date {
+  text-align: end;
+  margin-top: 0;
+}
+
+.card-img {
+  width: 50%;
+  border: solid 1px #c4c4c4;
+}
+
+.img-container {
+  margin-bottom: 5%;
+}
+
+.floating-btn {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #18181E;
+  border-radius: 50%;
+  color: white;
+  font-size: 40px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25%);
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  color: #DEC79B;
+  transition: 0.25s;
+}
+
+.floating-btn:active {
+  background: black;
+}
+
+.date-label {
+  font-weight: bold;
+  font-family: 'Karma', serif;
+}
+
+.search-field {
+  margin-left: 6px;
+}
+
+.username-field {
+  width: 396px;
+  height: 56px;
+  padding: 18.5px 14px;
+  margin: 16px 0 8px 0;
+  border: solid 1px #c4c4c4;
+  border-radius: 5px;
+}
+
+.password-field {
+  width: 396px;
+  height: 56px;
+  padding: 18.5px 14px;
+  margin: 16px 0 8px 0;
+  border: solid 1px #c4c4c4;
+  border-radius: 5px;
+}
+
+.login-submit-btn {
+  margin: 24px 0 16px 0;
+}
+
+.login-logo {
+  border: solid 1px #c4c4c4;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+.navbar {
+  background-color: #18181E;
+  border-radius: 5px;
+}
+
+.search-form-date {
+  margin: 1.5rem 0;
+}
+
+.accordion-sum-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h3-date-sum {
+  margin: 0;
+  line-height: inherit;
+}
+
+.accordion-container {
+  margin-top: 1rem;
+}
+
+.card-accord-details {
+  text-align: initial;
+}
