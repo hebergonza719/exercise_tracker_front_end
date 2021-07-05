@@ -41,7 +41,7 @@ function Register({ values, errors, touched, status }) {
       <Form>
         <label htmlFor="password">
           <Field id="password"
-            type="text"
+            type="password"
             name="password"
             placeholder="Password"
             className="password-field"
