@@ -6,6 +6,6 @@ export const axiosWithAuth = () => {
     headers: {
       Authorization: token
     },
-    baseURL: "http://localhost:4000/api"
+    baseURL: `${process.env.REACT_APP_BACKEND_URL}`
   })
 }

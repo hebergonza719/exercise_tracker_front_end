@@ -77,7 +77,7 @@ const FormikRegister = withFormik({
 
   handleSubmit(values, {resetForm}) {
     axios
-      .post("http://localhost:4000/api/auth/register", 
+      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, 
       values,
       { withCredentials: true }
       )

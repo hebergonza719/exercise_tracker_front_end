@@ -200,7 +200,7 @@ const FormikLogForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     const newValues = { ...values, user_id: localStorage.getItem('user_id') };
     axiosWithAuth()
-      .post("http://localhost:4000/api/logs", newValues)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/logs`, newValues)
       .then(res => {
         // sends a status update through props in UserForm with value as response.data content
         // this comes from the formikBag
