@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 import logo from '../images/Track-It-Logo.png';
+import { useHistory } from 'react-router-dom';
 
 
 const Main = styled.div`
@@ -19,7 +20,21 @@ const Main = styled.div`
   margin-top: 60px;
 `
 
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
 function Register({ values, errors, touched, status }) {
+  let history = useHistory();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    history.push("/lastlog-guest");
+  };
 
   return (
     <Main>
@@ -51,7 +66,10 @@ function Register({ values, errors, touched, status }) {
             <p>{errors.password}</p>
           )}
         </label>
-        <Button variant="dark" className="login-submit-btn" type="submit">Register</Button>
+        <BtnContainer>
+          <Button variant="dark" className="login-submit-btn" type="submit">Register</Button>
+          <Button variant="dark" onClick={handleClick} className="login-submit-btn">Guest</Button>
+        </BtnContainer>
         <div>
           <h5>Already registered?</h5>
           <NavLink to="/">Sign-in</NavLink>
@@ -82,7 +100,9 @@ const FormikRegister = withFormik({
       { withCredentials: true }
       )
       .then(res => {
-        console.log(res);
+        // console.log(res);
+        alert("New User Created")
+        res.status(200).json({ "message": "Register successful" });
       })
       .catch(err => console.log(err.response));
     resetForm();

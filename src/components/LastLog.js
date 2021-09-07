@@ -32,10 +32,11 @@ function LastLog({ logs, getData }) {
       <div>
         <Navbar />
         <H3Styled>You have no previous logs</H3Styled>
-        <Link to="/new-log">
+        {/* <Link to="/new-log"> */}
+        <Link to={localStorage.getItem('token') ? "/new-log" : "/new-log-guest"}>
           <BtnStyle>Create a new log</BtnStyle>
         </Link>
-        <Link to="/new-log" className="material-icons floating-btn">add</Link>
+        <Link to={localStorage.getItem('token') ? "/new-log" : "/new-log-guest"} className="material-icons floating-btn">add</Link>
       </div>
     );
   }
@@ -45,10 +46,10 @@ function LastLog({ logs, getData }) {
         <Navbar />
         <SearchForm exerciseList={logs.logs} />
         
-        <Link to="/new-log">
+        <Link to={localStorage.getItem('token') ? "/new-log" : "/new-log-guest"}>
           <BtnStyle>Create a new log</BtnStyle>
         </Link>
-        <Link to="/new-log" className="material-icons floating-btn">add</Link>
+        <Link to={localStorage.getItem('token') ? "/new-log" : "/new-log-guest"} className="material-icons floating-btn">add</Link>
       </div>
     );
   };

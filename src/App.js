@@ -28,7 +28,8 @@ function App(props) {
           />
           <PrivateRoute path="/lastlog" component={LastLog}/>
           <PrivateRoute path="/new-log" component={LogForm}/>
-
+          <Route path="/lastlog-guest" component={LastLog}/>
+          <Route path="/new-log-guest" component={LogForm}/>
         </Switch>
       </div>
     </BrowserRouter>

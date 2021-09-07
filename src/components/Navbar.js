@@ -18,7 +18,7 @@ function NavBar() {
     <Navbar variant="dark" sticky="top">
       <Container fluid>
         <Navbar.Text>
-          Signed in as {localStorage.getItem("username").toUpperCase()}
+          Signed in as {localStorage.getItem("username") ? localStorage.getItem("username").toUpperCase() : 'GUEST' }
         </Navbar.Text>
         <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
       </Container>
