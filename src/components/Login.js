@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 import logo from '../images/Track-It-Logo.png';
+import { useHistory } from 'react-router-dom';
 
 
 const Main = styled.div`
@@ -19,7 +20,22 @@ const Main = styled.div`
   margin-top: 60px;
 `
 
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
+
 function Login({ values, errors, touched, status }) {
+  let history = useHistory();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    history.push("/lastlog-guest");
+  };
+
   return (
     <Main>
       <img className="login-logo" src={logo} alt="track it logo"/>
@@ -50,7 +66,10 @@ function Login({ values, errors, touched, status }) {
             <p>{errors.password}</p>
           )}
         </label>
-        <Button variant="dark" className="login-submit-btn" type="submit">Login</Button>
+        <BtnContainer>
+          <Button variant="dark" className="login-submit-btn" type="submit">Login</Button>
+          <Button variant="dark" onClick={handleClick} className="login-submit-btn">Guest</Button>
+        </BtnContainer>
         <div>
           <h5>Create an account?</h5>
           <NavLink to="/register">Register</NavLink>

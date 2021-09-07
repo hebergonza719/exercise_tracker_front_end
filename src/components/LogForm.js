@@ -6,6 +6,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import Navbar from './Navbar';
+import axios from 'axios';
 
 
 const LabelStyle = styled.label`
@@ -167,7 +168,8 @@ const LogForm = ({ values, errors, touched, status }) => {
         <ButtonContainer>
           <BtnStyle type="submit">Log</BtnStyle>
 
-          <Link to="/lastlog">
+          {/* <Link to="/lastlog"> */}
+          <Link to={localStorage.getItem('token') ? "/lastlog" : "/lastlog-guest"}>
             <BtnStyle>Return</BtnStyle>
           </Link>
         </ButtonContainer>
@@ -198,19 +200,35 @@ const FormikLogForm = withFormik({
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {
-    const newValues = { ...values, user_id: localStorage.getItem('user_id') };
-    axiosWithAuth()
-      .post(`${process.env.REACT_APP_BACKEND_URL}/logs`, newValues)
-      .then(res => {
-        // sends a status update through props in UserForm with value as response.data content
-        // this comes from the formikBag
-        setStatus(res.data);
+    if (localStorage.getItem('token')) {
+      const newValues = { ...values, user_id: localStorage.getItem('user_id') };
+      axiosWithAuth()
+        .post(`${process.env.REACT_APP_BACKEND_URL}/logs`, newValues)
+        .then(res => {
+          // sends a status update through props in UserForm with value as response.data content
+          // this comes from the formikBag
+          setStatus(res.data);
 
-        //clears form inputs, from FormikBag
-        resetForm();
-      })
-      .catch(err => console.log(err.response));
-    alert("New Exercise Submitted");
+          //clears form inputs, from FormikBag
+          resetForm();
+        })
+        .catch(err => console.log(err.response));
+      alert("New Exercise Submitted");
+    } else {
+      const newValues = values;
+      axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/guest`, newValues)
+        .then(res => {
+          // sends a status update through props in UserForm with value as response.data content
+          // this comes from the formikBag
+          setStatus(res.data);
+
+          //clears form inputs, from FormikBag
+          resetForm();
+        })
+        .catch(err => console.log(err.response));
+      alert("New Exercise Submitted");
+    }
   }
 
 })(LogForm);
